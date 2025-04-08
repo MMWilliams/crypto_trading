@@ -1,0 +1,17 @@
+.env
+venv
+logs/
+all_cluster_models
+apps/openai_integration
+censemble_cluster_models
+cluster_models
+apps/market/management/commands/kraken_archive
+apps/market/management/commands/ml
+improved_cluster_models
+logs
+financellm-d691f-firebase-adminsdk-i9ebs-cf158b2a0a
+
+financellm_backend/financellm-d691f-firebase-adminsdk-i9ebs-cf158b2a0a.json
+*.log
+*.json
+__pycache__/
