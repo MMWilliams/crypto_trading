@@ -33,7 +33,7 @@ firebase_credentials = {
     "auth_provider_x509_cert_url": os.getenv("FIREBASE_AUTH_PROVIDER_X509_CERT_URL"),
     "client_x509_cert_url": os.getenv("FIREBASE_CLIENT_X509_CERT_URL")
 }
-
+print(firebase_credentials)
 
 FIREBASE_CREDENTIAL = credentials.Certificate(firebase_credentials)
 firebase_admin.initialize_app(FIREBASE_CREDENTIAL)
