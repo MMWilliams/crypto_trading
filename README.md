@@ -26,19 +26,16 @@ You need two components running simultaneously (in separate terminal windows):
 ```bash
 #run each worker on its own terminal
 # Start the worker for signals with its own log file
-celery -A financellm_backend worker -Q kraken_signals -n signals_worker@%h --loglevel=info --logfile=logs/kraken_signals.log
+python -m celery -A financellm_backend worker -Q kraken_signals -n signals_worker@%h --loglevel=info --logfile=logs/kraken_signals.log
 
 # Start the worker for agent with its own log file
-celery -A financellm_backend worker -Q kraken_agent -n agent_worker@%h --loglevel=info --logfile=logs/kraken_agent.log
+python -m  celery -A financellm_backend worker -Q kraken_agent -n agent_worker@%h --loglevel=info --logfile=logs/kraken_agent.log
 
 # Start the worker for monitoring with its own log file
-celery -A financellm_backend worker -Q kraken_monitor -n monitor_worker@%h --loglevel=info --logfile=logs/kraken_monitor.log
+python -m celery -A financellm_backend worker -Q kraken_monitor -n monitor_worker@%h --loglevel=info --logfile=logs/kraken_monitor.log
 
 # For the beat scheduler as well
-celery -A financellm_backend beat --loglevel=info --logfile=logs/celery_beat.log
-
-
-
+python -m celery -A financellm_backend beat --loglevel=info --logfile=logs/celery_beat.log
 ```
 
 To run workers for specific queues:

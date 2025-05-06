@@ -468,7 +468,7 @@ def process_signals_and_trade():
     analyzer = KrakenMarketAnalyzer(api_key, api_secret)
     
     # Define the maximum investment limit per coin in USD
-    MAX_INVESTMENT_PER_COIN = 300.0
+    MAX_INVESTMENT_PER_COIN = 400.0
     
     # Retrieve the current portfolio allocations
     current_portfolio = get_current_portfolio_allocations(analyzer.kraken_api)
@@ -589,7 +589,7 @@ def process_signals_and_trade():
                f"Strategies: Triple EMA: {top_signal.get('has_triple_ema')}, "
                f"EMA+HA+PSAR: {top_signal.get('has_ema_ha_psar')}, "
                f"TTM Squeeze: {top_signal.get('has_ttm_squeeze')}")
-
+    
     # Get account balance
     balances = analyzer.get_balance()
     usd_balance = float(balances.get('ZUSD', 0))
@@ -599,11 +599,11 @@ def process_signals_and_trade():
     available_investment = top_signal.get('available_investment', MAX_INVESTMENT_PER_COIN)
     
     # Use the smaller value: either the available investment or the default amount
-    default_trade_amount = 100.0  # Base amount to trade per signal
+    default_trade_amount = 200.0  # Base amount to trade per signal
     desired_usd = min(available_investment, default_trade_amount)
     
     # Ensure we're investing at least a minimum amount (e.g. $20)
-    if desired_usd < 50.0:
+    if desired_usd < 100.0:
         # If we have less than $20 available to invest in this coin, use it all up to reach the $100 cap
         desired_usd = available_investment
     
